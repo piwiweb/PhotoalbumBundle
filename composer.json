@@ -1,0 +1,24 @@
+{
+    "name": "piwiweb/photoalbum-bundle",
+    "description": "Photoalbum for the Symfony2 framework with support for Gaufrette",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pim Widdershoven",
+            "email": "pim@piwi-web.com",
+            "homepage": "https://www.piwi-web.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": "~2.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "Piwiweb\\PhotoalbumBundle": ""
+        }
+    },
+    "target-dir": "Piwiweb/PhotoalbumBundle"
+}

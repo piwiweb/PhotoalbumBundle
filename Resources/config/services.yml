@@ -1,0 +1,23 @@
+parameters:
+    piwiweb_photoalbum.photo_manager.class: Piwiweb\Photoalbum\Doctrine\PhotoManager
+    piwiweb_photoalbum.album_manager.class: Piwiweb\Photoalbum\Doctrine\AlbumManager
+
+services:
+    # Managers
+    piwiweb_photoalbum.photo_manager:
+        class: %piwiweb_photoalbum.photo_manager.class%
+        arguments:
+            - @piwiweb_photoalbum.entity_manager
+            - %piwiweb_photoalbum.model.photo.class%
+
+    piwiweb_photoalbum.album_manager:
+        class: %piwiweb_photoalbum.album_manager.class%
+        arguments:
+            - @piwiweb_photoalbum.entity_manager
+            - %piwiweb_photoalbum.model.album.class%
+
+    # Entity manager
+    piwiweb_photoalbum.entity_manager:
+        class: Doctrine\ORM\EntityManager
+        factory_service: doctrine
+        factory_method: getManager

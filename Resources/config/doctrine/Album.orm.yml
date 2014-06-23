@@ -1,0 +1,50 @@
+Piwiweb\PhotoalbumBundle\Entity\Album:
+    type: mappedSuperclass
+    fields:
+        title:
+            type: string
+            length: 255
+        description:
+            type: text
+            length: null
+        date:
+            type: datetime
+            length: null
+        views:
+            type: integer
+            length: null
+        count:
+            type: integer
+            length: null
+        author:
+            type: string
+            length: 255
+        public:
+            type: boolean
+            length: null
+        slug:
+            type: string
+            length: 128
+            unique: true
+    oneToMany:
+        photos:
+            targetEntity: Piwiweb\PhotoalbumBundle\Entity\Photo
+            cascade:
+                - persist
+            mappedBy: album
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    oneToOne:
+        preview:
+            targetEntity: Piwiweb\PhotoalbumBundle\Entity\Photo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                preview_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks:
+        prePersist:
+            - setDate

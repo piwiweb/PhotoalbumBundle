@@ -1,0 +1,36 @@
+Piwiweb\PhotoalbumBundle\Entity\Photo:
+    type: mappedSuperclass
+    fields:
+        title:
+            type: string
+            length: 255
+            nullable: true
+        description:
+            type: text
+            length: null
+            nullable: true
+        date:
+            type: datetime
+            length: null
+        views:
+            type: integer
+            length: null
+        author:
+            type: string
+            length: 255
+        filename:
+            type: string
+            length: 255
+    manyToOne:
+        album:
+            targetEntity: Piwiweb\PhotoalbumBundle\Entity\Album
+            cascade: {  }
+            mappedBy: null
+            inversedBy: photos
+            joinColumns:
+                album_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks:
+        prePersist:
+            - setDate
